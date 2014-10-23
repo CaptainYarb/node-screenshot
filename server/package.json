@@ -1,0 +1,16 @@
+{
+  "name": "node-screenshot-server",
+  "version": "0.0.1",
+  "description": "Screenshot capture web server.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "hapi": "^7.0.0",
+    "underscore": "^1.7.0"
+  }
+}

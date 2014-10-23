@@ -1,0 +1,17 @@
+{
+  "name": "node-screenshot",
+  "version": "0.0.1",
+  "node-main": "app.js",
+  "main": "index.html",
+  "window": {
+    "frame": false,
+    "toolbar": false,
+    "width": 200,
+    "height": 150,
+    "position": "center"
+  },
+  "chromium-args": "--disable-web-security --ignore-certificate-errors",
+  "dependencies": {
+    "underscore": "^1.7.0"
+  }
+}

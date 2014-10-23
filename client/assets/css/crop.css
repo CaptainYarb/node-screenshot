@@ -1,0 +1,19 @@
+body{
+	background: transparent;
+	margin:0;
+	padding:0;
+	position: relative;
+	overflow: hidden;
+}
+canvas{
+	position: absolute;
+	top:0;
+	left: 0;
+	cursor: crosshair;
+}
+canvas#outputCanvas{
+	display:none;
+}
+img{
+	background-color: rgba(0,0,0,0.5)
+}
