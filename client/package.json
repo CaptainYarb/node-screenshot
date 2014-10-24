@@ -4,8 +4,9 @@
   "node-main": "app.js",
   "main": "index.html",
   "window": {
-    "frame": false,
-    "toolbar": false,
+    "frame": true,
+    "toolbar": true,
+    "show": true,
     "width": 200,
     "height": 150,
     "position": "center"

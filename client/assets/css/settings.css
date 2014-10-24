@@ -1,0 +1,46 @@
+body{
+	background: #80bd01;
+	font-family: "Open Sans", "arial";
+	font-size:14px;
+	padding:15px;
+}
+.clear{
+	clear: both;
+	overflow: hidden;
+}
+form{
+	background: #fff;
+	padding:15px;
+}
+form fieldset{
+	border: 1px solid #ccc;;
+}
+form fieldset legend{
+	font-size:24px;
+	padding:0 15px 5px 7px;
+	margin-left:8px;
+}
+form fieldset .field{
+	padding: 7px 15px;
+}
+form fieldset .field legend{
+	display: block;
+	font-weight: 300;
+	margin-bottom: 3px;
+}
+form fieldset .field input{
+	box-sizing: border-box;
+	padding:10px;
+	width: 100%;
+	border: 1px solid #ccc;
+	background: #F3F3F3;
+}
+form fieldset .field small{
+	font-size:10px;
+	color: #666;
+}
+form fieldset button{
+	float:right;
+	margin: 15px;
+	padding:5px 15px;
+}

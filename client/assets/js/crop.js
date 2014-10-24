@@ -1,14 +1,21 @@
 process.on("uncaughtException", function(e){ console.log(e); });
 
+if(!global.app || !global.app.ss){
+	return process.exit();
+}
+
 var gui = require('nw.gui'),
+	fs = require('fs'),
 	clipboard = gui.Clipboard.get();
 
 // window shit goes here
 $(document).ready(function(){
 	var canvas = document.getElementById('canvas');
 
-	canvas.width =global.app.ss.coords.width;
-	canvas.height= global.app.ss.coords.height;
+	console.log(global.app.ss);
+
+	canvas.width = global.app.ss.coords.width;
+	canvas.height = global.app.ss.coords.height;
 
 	var context = canvas.getContext('2d'),
 		screenshot = new Image();
@@ -83,9 +90,16 @@ $(document).ready(function(){
 					processData: false,
 					contentType: false,
 					success: function(data){
+						fs.unlinkSync(global.app.ss.filename); // cleanup
 						if(data && data.url){
 							clipboard.set(data.url, 'text');
 						}
+						global.app.events.emit('uploadSuccess', data.url);
+						return window.close();
+					},
+					error: function(err){
+						global.app.events.emit('uploadError', err);
+						// TODO: display error to user
 						return window.close();
 					}
 				});
