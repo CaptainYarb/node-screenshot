@@ -4,12 +4,9 @@
   "node-main": "app.js",
   "main": "index.html",
   "window": {
-    "frame": true,
-    "toolbar": true,
-    "show": true,
-    "width": 200,
-    "height": 150,
-    "position": "center"
+    "frame": false,
+    "toolbar": false,
+    "show": false
   },
   "chromium-args": "--disable-web-security --ignore-certificate-errors",
   "dependencies": {
