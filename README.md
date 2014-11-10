@@ -8,19 +8,20 @@ TODO:
 - [x] Create proof of concept
 - [x] Custom Event Binding when window is closed
 - [x] Find/Create Windows CLI program with appropriate license
+- [x] Organize code into event based system
+- [x] Create settings UI
+- [x] Hide initial UI to tray.
+- [x] Setup template system for HAPI server
 - [ ] Find/Create Linux/Mac CLI program with appropriate license
-- [ ] Organize code into event based system
-- [ ] Create settings UI
-- [ ] Hide initial UI to tray.
-- [ ] Setup template system for HAPI server
-
-Roadmap:
-------------
-
-- [ ] Secure upload auth
-- [ ] Create Index & screenshot view
-- [ ] Create database/backend to store screenshot private data
-- [ ] Server setup script
+- [ ] Add additional popup dialog for progress and status after uploaded
+- [ ] Add RethinkDB database layer for data storage
+- [ ] Add Authentication with user groups to server
+- [ ] Add Public/Team/Private/Password Screenshot privacy settings
+- [ ] Clientside settings
+- [ ] Fix capture box draw math
+- [ ] Fix screenshot crop math
+- [ ] Add Screenshot overview / team view / user view
+- [ ] Add more featurecreep
 
 Installation:
 ------------
