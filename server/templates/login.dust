@@ -1,0 +1,28 @@
+{>"layouts/master" /}
+{<body}
+
+<div class="wrapper">
+	<form id="login">
+		<h1>Login</h1>
+		<fieldset>
+			<div class="field">
+				<label for="username">Username: </label>
+				<div class="input">
+					<input type="text" name="username"  />
+				</div>
+			</div>
+			<div class="field">
+				<label for="password">Password: </label>
+				<div class="input">
+					<input type="password" name="password"  />
+				</div>
+			</div>
+			<div class="action">
+				<button class="btn green pull-right" type="submit">Login</button>
+				<div class="clear"></div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+{/body}

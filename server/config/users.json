@@ -1,0 +1,10 @@
+{
+	"users": [
+		{
+			"username": "blazedd",
+			"password": "123456",
+			"admin": true,
+			"limit": 5242880
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{>"layouts/master" /}
+{<body}
+
+<div class="wrapper">
+	home
+</div>
+
+{/body}

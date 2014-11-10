@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{title}</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<header>
+		<div class="wrapper">
+			<a href="/" title="GrabKit" id="logo">
+				<img src="/assets/images/logo.png" alt="GrabKit - simple, open source, screenshot sharing" />
+			</a>
+			<nav>
+				<ul>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/screenshots">Screenshots</a></li>
+					<li class="active"><a href="/">Home</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="clear"></div>
+	</header>
+	<div id="content">
+		{+body /}
+	</div>
+	<footer>
+		<div class="wrapper text-right">
+			<span class="copyleft">Powered by <a href="http://grabkit.net" target="_blank"><img src="/assets/images/logo_flat.png" alt="logo" /> GrabKit</a></span>
+		</div>
+	</footer>
+</body>
+</html>

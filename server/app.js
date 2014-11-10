@@ -1,70 +1,51 @@
 var fs = require('fs'),
-    hapi = require('hapi'),
-    config = require('./config.json'),
-    uploadPath = './public/uploads/';
+    _ = require('underscore');
 
+var app = {
+    config: require('./config.json'),
+    dir: process.cwd() + '/',
+    hapi: require('hapi'),
+    joi: require('joi')
+};
 
-var server = hapi.createServer(config.host, config.port);
-
-
-server.route({
-    method: 'GET',
-    path: '/',
-    handler: function(request, reply){
-        return reply('home');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-        directory: {
-            path: 'public'
+app.server = app.hapi.createServer(app.config.server.host, app.config.server.port, {
+    plugins: {
+        rethinkdb: {
+            autoconnect: true
         }
     }
 });
 
-server.route({
-    method: 'GET',
-    path: '/ss/{id}',
-    handler: function(request, reply){
-        var filename = 'ss-' + request.params.id + '.png',
-            file = uploadPath + filename;
-        fs.exists(file, function(exists){
-            if(!exists){
-                return reply(hapi.error.notFound('404'));
+// load system libraries
+_.each(fs.readdirSync(app.dir + app.config.systemDir), function(file){
+    if(file.slice(-3) === '.js'){
+        var systemParts = require(app.dir + app.config.systemDir + file)(app);
+        _.each(systemParts, function(fn, name){
+            if(fn !== false){
+                app[name] = fn;
             }
-            return reply('<img src="/uploads/' + filename + '" alt="screenshot" />');
         });
     }
 });
 
-server.route({
-    method: 'POST',
-    path: '/upload',
-    handler: function(request, reply){
-        var data = request.payload;
-        if(data.file){
-            var d = new Date().getTime(),
-                slug = Math.random().toString(36).substring(7) + '-' + d,
-                filename = 'ss-' + slug +'.png',
-                path = uploadPath;
-            fs.writeFile(path + filename, data.file, function (err){
-                if(err){
-                    return reply(hapi.error.internal('File write error.'));
-                }
-                return reply({
-                    filename: filename,
-                    url: config.url + 'ss/' + slug
-                });
-            });
-        }else{
-            return reply(hapi.error.internal('no file uploaded'));
-        }
+// load controllers
+_.each(app.recursiveList(app.dir + 'controllers'), function(file){
+    try{
+        require(file)(app);
+    }catch(e){
+        app.logs.emit('error', 'Failed to load Controller [' + file + ']. ' + e.stack)
     }
 });
 
-server.start(function (){
-    console.log('info', 'Server running at: ' + server.info.uri);
+// handle 404
+app.server.route({
+    method: '*',
+    path: '/{p*}',
+    handler: function(request, reply){
+        reply.code(404).view('404.dust');
+    }
+});
+
+app.server.start(function (){
+    console.log('info', 'Server running at: ' + app.server.info.uri);
 });

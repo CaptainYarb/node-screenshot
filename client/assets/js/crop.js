@@ -94,11 +94,18 @@ $(document).ready(function(){
 						if(data && data.url){
 							clipboard.set(data.url, 'text');
 						}
-						global.app.events.emit('uploadSuccess', data.url);
+						global.app.events.emit('uploadSuccess', {
+							url: data.url,
+							tempFile: global.app.ss.filename
+						});
 						return window.close();
 					},
 					error: function(err){
-						global.app.events.emit('uploadError', err);
+						global.app.events.emit('uploadError', {
+							url: data.url,
+							tempFile: global.app.ss.filename,
+							error: err
+						});
 						// TODO: display error to user
 						return window.close();
 					}

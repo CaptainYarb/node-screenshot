@@ -1,5 +1,6 @@
 // right click menu
-var menu = new gui.Menu();
+var menu = new gui.Menu(),
+	fs = require('fs');
 menu.append(new gui.MenuItem({ label: 'Create Screenshot', click: function(){
 	application.screenshot();
 }}));
@@ -19,12 +20,18 @@ var tray = new gui.Tray({
 	menu: menu
 });
 
-global.app.events.on('uploadSuccess', function(url){
+global.app.events.on('uploadSuccess', function(data){
 	// TODO: create popup
+	fs.unlink(data.tempFile, function(err){
+		// TODO: handle temp error
+	});
 });
 
-global.app.events.on('uploadError', function(err){
+global.app.events.on('uploadError', function(data){
 	// TODO: create popup
+	fs.unlink(data.tempFile, function(err){
+		// TODO: handle temp error
+	});
 });
 
 tray.on('click', function(){

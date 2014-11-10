@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Screenshot</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+</head>
+<body id="screenshot">
+	<header id="slim">
+		<h5>Website</h5>
+		<p>by <a href="/screenshots/blazedd" class="username">Blazedd</a></p>
+		<span class="copyleft dark small pull-right">Powered by <a href="http://grabkit.net" target="_blank"><img src="/assets/images/logo_flat.png" alt="logo" /> GrabKit</a></span>
+		<div class="clear"></div>
+	</header>
+	<div id="screenshotCanvas">
+		<img src="{screenshot}" alt="screenshot">
+	</div>
+</body>
+</html>

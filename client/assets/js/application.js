@@ -23,9 +23,10 @@ var application = {
 		global.app.ss = vals;
 		exec('"' + vals.program + '" ' + vals.opts.join(' '), function(){
 			global.app.ssWindow = gui.Window.open('crop.html', {
-				frame: true,
-				toolbar: true,
+				frame: false,
+				toolbar: false,
 				'always-on-top': true,
+				transparent: true,
 				resize: false
 			});
 			global.app.ssWindow.resizeTo(vals.coords.width, vals.coords.height);
